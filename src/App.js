@@ -7,10 +7,6 @@ import Modal from "./components/Modal/Modal";
 import Backdrop from "./components/Backdrop/Backdrop";
 import List from "./components/List/List";
 
-const animationTiming = {
-  enter: 400,
-  exit: 1000,
-};
 class App extends Component {
   state = {
     modalIsOpen: false,
@@ -54,14 +50,7 @@ class App extends Component {
             ></div>
           )}
         </Transition>
-        <Transition
-          in={this.state.modalIsOpen}
-          timeout={animationTiming}
-          mountOnEnter
-          unmountOnExit
-        >
-          {(state) => <Modal show={state} closed={this.closeModal} />}
-        </Transition>
+        <Modal show={this.state.modalIsOpen} closed={this.closeModal} />
         {this.state.modalIsOpen ? <Backdrop show /> : null}
         <button className="Button" onClick={this.showModal}>
           Open Modal
